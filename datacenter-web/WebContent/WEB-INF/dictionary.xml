@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        ">
+        
+<bean
+	class="nl.slack4all.datacenter.lib.Dictionary" >
+	<property name="list">
+	<list>
+		<list>
+			<value>rood</value>
+			<value>groen</value>
+			<value>blauw</value>
+		</list>
+		<list>
+			<value>rond</value>
+			<value>vierkant</value>
+			<value>driehoek</value>
+		</list>
+		<list>
+			<value>rond</value>
+			<value>vierkant</value>
+			<value>driehoek</value>
+			<value>Windows Server 2008</value>
+		</list>			
+	</list>
+	</property>
+</bean>
+			       
+        
+</beans>

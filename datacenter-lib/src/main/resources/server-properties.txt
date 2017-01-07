@@ -1,0 +1,19 @@
+Server properties:
+
+id = fqdn
+
+hostname
+fqdn
+description
+operatingsystem
+ipaddress
+cores
+memory
+admin
+contact
+owner
+costcenter
+location
+dtap
+hostedby
+

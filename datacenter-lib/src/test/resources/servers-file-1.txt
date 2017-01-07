@@ -1,0 +1,13 @@
+id	name	hostname	ipaddress	description
+ms-dc-p01.example.com	ms-dc-p01	ms-dc-p01	10.10.0.1	Production domain controler one
+ms-dc-p02.example.com	ms-dc-p02	ms-dc-p02	10.10.0.2	Production domain controler two
+ms-dc-t02.example.com	ms-dc-t01	ms-dc-t01	10.20.0.1	Test domain controler one
+ms-dc-t02.example.com	ms-dc-t02	ms-dc-t02	10.20.0.2	Test domain controler two
+ms-fs-p01.example.com	ms-fs-p01	ms-fs-p01	10.10.0.3	Production fileserver one
+ms-fs-p02.example.com	ms-fs-p02	ms-fs-p02	10.10.0.4	Production fileserver two
+ms-fs-t01.example.com	ms-fs-t01	ms-fs-t01	10.20.0.3	Test fileserver one
+ms-fs-t02.example.com	ms-fs-t02	ms-fs-t02	10.20.0.4	Test fileserver two
+ms-web-p01.example.com	ms-web-p01	ms-web-p01	10.10.0.5	Production webserver one
+ms-web-p02.example.com	ms-web-p02	ms-web-p02	10.10.0.6	Production webserver two
+ms-web-t01.example.com	ms-web-t01	ms-web-t01	10.20.0.5	test webserver one
+ms-web-t02.example.com	ms-web-t02	ms-web-t02	10.20.0.6	test webserver two

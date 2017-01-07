@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="datacenter" default="all" basedir=".">
+  <property name="cql.params" value="" />
+  <property name="cql.sh" value="/home/hans/workspace/cassandra/apache-cassandra-3.7/bin/cqlsh" />
+  <target name="all" depends="cleandb, createdb, insertdb"></target>
+
+  <target name="cleandb">
+     <exec executable="${cql.sh}" input="cleandb.cql">
+        <arg line="${cql.params}" />
+     </exec>
+  </target>
+
+  <target name="createdb">
+     <exec executable="${cql.sh}" input="createdb.cql">
+        <arg line="${cql.params}" />
+     </exec>
+  </target>
+
+  <target name="insertdb">
+     <exec executable="${cql.sh}" input="insertdb.cql">
+        <arg line="${cql.params}" />
+     </exec>
+  </target>
+</project>

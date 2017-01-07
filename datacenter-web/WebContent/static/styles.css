@@ -1,0 +1,38 @@
+body{
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+h1.title { 
+	background-color: black;
+	color: white;
+	font-size: 30px;
+	padding: 10px;
+	margin:0;
+
+}
+p.searchbar { 
+	background-color:gray;
+	padding: 5px;
+	margin:0;
+}
+
+div.results {
+	padding-left: 50px;
+	padding-top: 10px;
+}
+
+ul {
+	list-style: none;
+	padding: 0px;
+}
+li {
+	padding-top: 5px;
+	 max-width: 500px;
+}
+
+table.dataSet, th, td {
+	border: 1px solid black;
+	border-color:gray;
+	border-collapse: collapse;
+	padding: 8px;
+}

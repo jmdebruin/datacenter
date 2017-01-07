@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        ">
+        
+         <util:list id="osList" list-class="java.util.LinkedList" value-type="nl.slack4all.datacenter.lib.Item">
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="Windows 2000" ></property>
+			<property name="abbreviation" value="win2000" ></property>
+		</bean>
+		<bean class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="Windows Server 2003" ></property>
+			<property name="abbreviation" value="win2003" ></property>
+		</bean>
+		<bean class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="Windows Server 2008" ></property>
+			<property name="abbreviation" value="win2008" ></property>
+		</bean>
+		<bean class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="Windows Server 2012" ></property>
+			<property name="abbreviation" value="win2012" ></property>
+		</bean>
+		<bean class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="Red Hat Enterprise Linux 4" ></property>
+			<property name="abbreviation" value="rhel4" ></property>
+		</bean>
+		<bean class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="Red Hat Enterprise Linux 5" ></property>
+			<property name="abbreviation" value="rhel5" ></property>
+		</bean>
+		<bean class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="Red Hat Enterprise Linux 6" ></property>
+			<property name="abbreviation" value="rhel6" ></property>
+		</bean>
+		<bean class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="Red Hat Enterprise Linux 7" ></property>
+			<property name="abbreviation" value="rhel7" ></property>
+		</bean>
+    </util:list>
+
+	<util:list id="typeList" list-class="java.util.LinkedList" value-type="nl.slack4all.datacenter.lib.Item">
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="application server" ></property>
+			<property name="abbreviation" value="app" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="mail server" ></property>
+			<property name="abbreviation" value="mail" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="web server" ></property>
+			<property name="abbreviation" value="web" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="ftp server" ></property>
+			<property name="abbreviation" value="ftp" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="terminal server" ></property>
+			<property name="abbreviation" value="rdp" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="file server" ></property>
+			<property name="abbreviation" value="smb" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="time server" ></property>
+			<property name="abbreviation" value="ntp" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="domainc controller" ></property>
+			<property name="abbreviation" value="dc" ></property>
+		</bean>		
+    </util:list>
+    
+
+	<util:list id="domainList" list-class="java.util.LinkedList" value-type="nl.slack4all.datacenter.lib.Item">
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="intranet.local" ></property>
+			<property name="abbreviation" value="intranet" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="dmz.local" ></property>
+			<property name="abbreviation" value="dmz" ></property>
+		</bean>
+    </util:list>
+
+	<util:list id="dtapList" list-class="java.util.LinkedList" value-type="nl.slack4all.datacenter.lib.Item">
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="production" ></property>
+			<property name="abbreviation" value="prd" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="acceptance" ></property>
+			<property name="abbreviation" value="acc" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="test" ></property>
+			<property name="abbreviation" value="tst" ></property>
+		</bean>
+		<bean  class="nl.slack4all.datacenter.lib.Item"> 
+			<property name="name" value="development" ></property>
+			<property name="abbreviation" value="dev" ></property>
+		</bean>
+    </util:list>
+    
+    </beans>
+    
+    

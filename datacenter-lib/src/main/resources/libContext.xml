@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        ">
+
+			
+	
+	<util:list id="serverProperties">
+	<bean class="nl.slack4all.datacenter.lib.Property" >
+		<property name="key" value="description" />
+		<property name="header" value="description" />
+		<property name="suffix" value="" />
+		<property name="description" value="A short description." />
+	</bean>
+	<bean class="nl.slack4all.datacenter.lib.Property" >
+		<property name="key" value="operatingSystem" />
+		<property name="header" value="operating system" />
+		<property name="suffix" value="" />
+		<property name="description" value="The operating system which is installed the device" />
+	</bean>
+	<bean class="nl.slack4all.datacenter.lib.Property" >
+		<property name="key" value="ipAddress" />
+		<property name="header" value="IP address" />
+		<property name="suffix" value="" />
+		<property name="description" value="The main IP address of the device" />
+	</bean>
+	<bean class="nl.slack4all.datacenter.lib.Property" >
+		<property name="key" value="cpus" />
+		<property name="header" value="number of cpu's" />
+		<property name="suffix" value="cpu's" />
+		<property name="description" value="The number of cpu cores in the device" />
+	</bean>
+	<bean class="nl.slack4all.datacenter.lib.Property" >
+		<property name="key" value="memmoryMiB" />
+		<property name="header" value="memory" />
+		<property name="suffix" value="MiB" />
+		<property name="description" value="The ammount of memory reported bij de BIOS of the device" />
+	</bean>
+	<bean class="nl.slack4all.datacenter.lib.Property" >
+		<property name="key" value="dtap" />
+		<property name="header" value="dtap" />
+		<property name="suffix" value="" />
+		<property name="description" value="Environment: development, testing, acceptance and production" />
+	</bean>
+	<bean class="nl.slack4all.datacenter.lib.Property" >
+		<property name="key" value="fqdn" />
+		<property name="header" value="fqdn" />
+		<property name="suffix" value="" />
+		<property name="description" value="Fully qualified domain name" />
+	</bean>
+	<bean class="nl.slack4all.datacenter.lib.Property" >
+		<property name="key" value="hostname" />
+		<property name="header" value="hostname" />
+		<property name="suffix" value="" />
+		<property name="description" value="The dns hostname" />
+	</bean>
+	<bean class="nl.slack4all.datacenter.lib.Property" >
+		<property name="key" value="domain" />
+		<property name="header" value="domain" />
+		<property name="suffix" value="" />
+		<property name="description" value="The dns domain" />
+	</bean>
+	</util:list>
+    
+</beans>

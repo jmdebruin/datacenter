@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        ">
+        
+	<import resource="server-generator-settings.xml"/>
+	<import resource="dictionary.xml"/>
+
+
+	<bean id="serverGenerator"
+		class="nl.slack4all.datacenter.lib.datasource.ServerGenerator" 
+		init-method="init"
+		destroy-method="destroy" >
+		<property name="name" value="serverGenerator" />
+		<property name="N" value="100" />
+		<property name="osArray"><ref bean="osList" /></property>
+		<property name="domainArray"><ref bean="domainList" /></property>
+		<property name="dtapArray"><ref bean="dtapList" /></property>
+		<property name="typeArray"><ref bean="typeList" /></property>
+	</bean>
+	
+	<bean id="destructinator1"
+		class="nl.slack4all.datacenter.lib.datasource.ServerInator" 
+		init-method="init"
+		destroy-method="destroy" >
+		<property name="name" value="destructinator-1" />
+		<property name="seed" value="12395" />
+		<property name="datasource"><ref bean="serverGenerator" /></property>
+	</bean>
+	
+	<bean id="destructinator2"
+		class="nl.slack4all.datacenter.lib.datasource.ServerInator" 
+		init-method="init"
+		destroy-method="destroy" >
+		<property name="name" value="destructinator-2" />
+		<property name="seed" value="12375" />
+		<property name="datasource"><ref bean="serverGenerator" /></property>
+	</bean>
+	
+	<bean id="destructinator3"
+		class="nl.slack4all.datacenter.lib.datasource.ServerInator"
+		init-method="init"
+		destroy-method="destroy" >
+		<property name="name" value="destructinator-3" />
+		<property name="seed" value="12305" />
+		<property name="datasource"><ref bean="serverGenerator" /></property>
+	</bean>
+	
+	<bean id="destructinator4"
+		class="nl.slack4all.datacenter.lib.datasource.ServerInator"
+		init-method="init"
+		destroy-method="destroy" >
+		<property name="name" value="destructinator-4" />
+		<property name="seed" value="13375" />
+		<property name="datasource"><ref bean="serverGenerator" /></property>
+	</bean>
+	
+	<bean id="destructinator5"
+		class="nl.slack4all.datacenter.lib.datasource.ServerInator"
+		init-method="init"
+		destroy-method="destroy" >
+		<property name="name" value="destructinator-5" />
+		<property name="seed" value="13305" />
+		<property name="datasource"><ref bean="serverGenerator" /></property>
+	</bean>
+	
+	
+</beans>

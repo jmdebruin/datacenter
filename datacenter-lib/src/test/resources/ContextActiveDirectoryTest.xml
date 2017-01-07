@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        ">
+
+	<bean id="account" 
+		class="nl.slack4all.datacenter.lib.Account" >
+		<property name="domain" value="lab.local" />
+		<property name="username" value="datacenterTest" />
+		<property name="password" value="aTSTpassword!" />
+		
+	</bean>
+	
+ 	<bean id="active directory"
+		class="nl.slack4all.datacenter.lib.datasource.ActiveDirectory"
+		init-method="init"
+		destroy-method="destroy" >
+		<property name="name" value="servers in lab.local" />
+		<property name="type" value="servers" />
+		<property name="url" value="ldap://10.10.0.25:389" />
+		<property name="account"><ref bean="account" /></property>
+		<property name="searchFilter" value="(objectClass=computer)" />
+		<property name="searchBase" value="dc=lab,dc=local" />
+		<property name="attributeMap">
+			<map>
+				<entry key="name" value="hostname" /> <!-- this one is mandatory -->
+				<entry key="dNSHostName" value="FQDN" />
+				<entry key="operatingSystem" value="operating System" />
+				<entry key="operatingSystemVersion" value="operating system version" />
+				<entry key="distinguishedName" value="distinguished name" />
+				<entry key="division" value="division" />
+			</map>
+		</property>
+	</bean>
+	
+</beans>

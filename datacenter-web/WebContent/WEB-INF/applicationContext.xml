@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        ">
+        
+<import resource="datasources.xml"/>
+
+<bean id="dataCenter"
+		class="nl.slack4all.datacenter.lib.DataCenter"
+		init-method="init"
+		destroy-method="destroy" >
+		<property name="cqlConnection" ><ref bean="cqlConnection" /></property>
+		<property name="dataSources" ><ref bean="dataSources" /></property>		
+		<property name="logger" ><ref bean="logger" /></property>		
+	</bean>
+
+	<bean id="cqlConnection"
+		class="nl.slack4all.datacenter.lib.CQLConnection" 
+		init-method="init"
+		destroy-method="destroy" >
+		<property name="keyspace" value="datacenter" />
+		<property name="node" value="localhost" />
+	</bean>
+
+	<bean id="logger"
+		class="nl.slack4all.datacenter.lib.Logger" >
+		<property name="cqlConnection" ><ref bean="cqlConnection" /></property>
+	</bean>
+	
+	
+	<util:list id="dataSources" list-class="java.util.LinkedList" value-type="nl.slack4all.datacenter.lib.Datasource" >	
+	<ref bean="destructinator1" />
+	<ref bean="destructinator2" />
+	<ref bean="destructinator3" />
+	<ref bean="destructinator4" />
+	<ref bean="destructinator5" />
+	</util:list>
+    
+</beans>
