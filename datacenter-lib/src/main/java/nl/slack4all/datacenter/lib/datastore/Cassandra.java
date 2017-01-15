@@ -231,6 +231,25 @@ public class Cassandra implements DataStore {
 		return version;
 	}
 	
+	private Date readOldVersion(){
+		Date version = Empty.version;
+		final String query="SELECT Min(version) from datasources WHERE datasource=? AND type=? ;";
+		
+		PreparedStatement statement = statements.get(query);
+		if (statement==null) statements.put(query,statement=cqlConnection.getSession().prepare(query));	
+		
+		BoundStatement boundStatement = new BoundStatement(statement);
+		boundStatement.bind(getName(), getType());
+		ResultSet results = cqlConnection.getSession().execute(boundStatement);;
+		
+		Row row = results.one();
+		
+		if (row != null && ! row.isNull(0))
+			version = row.getTimestamp(0);
+		
+		return version;
+	}
+	
 	@Override
 	public List<DataSet> getDataSetList(Filter filter) {
 		
@@ -257,6 +276,29 @@ public class Cassandra implements DataStore {
 			
 		return dataSets;
 		
+	}
+	
+	@Override
+	public void deleteOldVersions(){
+
+		String query1 = "DELETE FROM datasources WHERE datasource=? AND type=? AND version=? ;";
+		PreparedStatement statement1 = statements.get(query1);
+		if (statement1==null) statements.put(query1,statement1=cqlConnection.getSession().prepare(query1));
+		BoundStatement boundStatement1 = new BoundStatement(statement1);
+		
+		final String query2="DELETE FROM datasets WHERE datasource=? AND type=? AND version=? ;";	
+		PreparedStatement statement2 = statements.get(query2);
+		if (statement2==null) statements.put(query2,statement2=cqlConnection.getSession().prepare(query2));
+		BoundStatement boundStatement2 = new BoundStatement(statement2);
+		
+		Date oldVersion=readOldVersion();
+		while (version.compareTo(oldVersion)>0){
+			boundStatement1.bind(getName(), getType(), oldVersion);
+			boundStatement2.bind(getName(), getType(), oldVersion);
+			cqlConnection.getSession().execute(boundStatement1);
+			cqlConnection.getSession().execute(boundStatement2);
+			oldVersion=readOldVersion();
+		}		
 	}
 
 	@Override

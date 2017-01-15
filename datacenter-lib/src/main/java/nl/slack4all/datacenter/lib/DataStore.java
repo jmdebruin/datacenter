@@ -18,6 +18,9 @@ public interface DataStore extends DataSource{
 
 	public void setVersion(Date version);
 	
+	public void deleteOldVersions();
+
+	
 	public DataSet 		     getDataSetById(String id);
 	public List<DataSet>     getDataSetList();
 	public List<DataSet>     getDataSetList(Filter filter);

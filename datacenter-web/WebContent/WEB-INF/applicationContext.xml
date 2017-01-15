@@ -22,7 +22,6 @@
 		destroy-method="destroy" >
 		<property name="cqlConnection" ><ref bean="cqlConnection" /></property>
 		<property name="dataSources" ><ref bean="dataSources" /></property>		
-		<property name="logger" ><ref bean="logger" /></property>		
 	</bean>
 
 	<bean id="cqlConnection"
@@ -32,12 +31,6 @@
 		<property name="keyspace" value="datacenter" />
 		<property name="node" value="localhost" />
 	</bean>
-
-	<bean id="logger"
-		class="nl.slack4all.datacenter.lib.Logger" >
-		<property name="cqlConnection" ><ref bean="cqlConnection" /></property>
-	</bean>
-	
 	
 	<util:list id="dataSources" list-class="java.util.LinkedList" value-type="nl.slack4all.datacenter.lib.Datasource" >	
 	<ref bean="destructinator1" />

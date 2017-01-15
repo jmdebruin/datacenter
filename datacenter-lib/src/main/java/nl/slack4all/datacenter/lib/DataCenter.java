@@ -10,33 +10,52 @@ package nl.slack4all.datacenter.lib;
 
 import java.util.List;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DataCenter {
+	
+	
+	private static final Logger logger = 
+			LoggerFactory.getLogger(DataCenter.class);	
 	
 	private static CQLConnection cqlConnection;
 	private static List<DataSource> dataSources;
+	
+	DataSourceCopier dataSourceCopier;
 	private static List<DataStore> copies;
 	private static DataStore merged;
-	private static Logger logger;
+	
+	private static DataCenterRefreshTask dataCenterRefreshTask;
+	private static int refreshInterval= 5 * 60 * 1000;
 	
 
 	public void init(){
-		logger.log("datacenter.init");
-		copies = Copier.getOldCopies(dataSources, cqlConnection);
+		logger.info("datacenter.init");
+		dataSourceCopier = new DataSourceCopier();
+		dataSourceCopier.setCqlConnection(cqlConnection);
+		dataSourceCopier.setDataSources(dataSources);
+		copies = dataSourceCopier.getCopies();
 		merged = Merger.getOldMerged(dataSources, cqlConnection);		
-		logger.log("datacenter.init.done");
+		dataCenterRefreshTask= new DataCenterRefreshTask();
+		dataCenterRefreshTask.setDatacenter(this);
+		dataCenterRefreshTask.setInterval(refreshInterval);
+		dataCenterRefreshTask.start();
+		logger.info("datacenter.init.done");
+		
 	}
 	
 	public void refresh(){
-		logger.log("datacenter.refresh");
-		copies = Copier.getNewCopies(dataSources, cqlConnection);
+		logger.info("datacenter.refresh");
+		cleanUp();
+		copies = dataSourceCopier.makeNewCopies();
 		merged = Merger.getNewMerged(dataSources, cqlConnection);		
-		logger.log("datacenter.refresh.done");
+		logger.info("datacenter.refresh.done");
 	}
-	
-	
-	
-	public void destroy(){
 		
+	public void destroy(){
+		dataCenterRefreshTask.doStop();
 	}
 
 	public CQLConnection getCqlConnection() {
@@ -69,15 +88,14 @@ public class DataCenter {
 
 	public void setMerged(DataStore merged) {
 		DataCenter.merged = merged;
+	}		
+
+	public void cleanUp() {
+		for (DataStore dataStore:copies) {
+			dataStore.deleteOldVersions();
+		}
+		merged.deleteOldVersions();		
 	}	
 	
-	public Logger getLogger() {
-		return logger;
-	}
-
-	public void setLogger(Logger logger) {
-		DataCenter.logger = logger;
-	}
-
 
 }

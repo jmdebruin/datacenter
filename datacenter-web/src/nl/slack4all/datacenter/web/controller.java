@@ -107,15 +107,6 @@ public class controller {
 		return mvc;
 	}		 
 	
-	
-@RequestMapping("/logs")
-public ModelAndView logs(){
-	ModelAndView mvc = new ModelAndView("logs");
-	List<String> loglines = dataCenter.getLogger().getLog(3);
-	mvc.addObject("loglines",loglines);
-	return mvc;
-}
-	
 }
 
 

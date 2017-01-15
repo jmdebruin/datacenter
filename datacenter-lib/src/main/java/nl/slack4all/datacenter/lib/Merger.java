@@ -51,23 +51,10 @@ public class Merger {
 
 		while (n>0) {
 			DataSet smallest = Collections.min(dataSets);
-
-			System.out.print("iterators  :");
-			for (Iterator<DataSet> item : iterators)
-				System.out.print(item + "; ");
-			System.out.println();
-			System.out.print("datasets   :");
-			for (DataSet item : dataSets)
-				System.out.print(item.getId() + "; ");
-			System.out.println();
-			System.out.println("n          : "+String.valueOf(n));
-			System.out.println("smallest   : "+smallest.getId());
-			System.out.print("pulled     : ");
 			
 			for (int i=(n-1); i>=0 ; i--){
 				if (smallest.compareTo(dataSets.get(i))==0){
 					mergeSets.add(dataSets.get(i));
-					System.out.print(i);
 					if (iterators.get(i).hasNext())
 						dataSets.set(i,iterators.get(i).next());
 					else {
@@ -75,11 +62,10 @@ public class Merger {
 						dataSets.remove(i);
 						n--;
 					}
-				} else System.out.print('.');
+				} 
 			}
 			merged.putDataSet(DataSet.merge(mergeSets));
 			mergeSets.clear();
-			System.out.println();
 		} 
 		
 		return merged;

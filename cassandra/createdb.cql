@@ -23,11 +23,5 @@ CREATE TABLE datasources (
     primary key ((datasource,type),version)
 );
 
-CREATE TABLE logs (
-	date		timestamp,
-	datetime	timestamp,
-	n			int,
-	text		text,
-	primary 	key (date,datetime,n)
-);   
+
  
